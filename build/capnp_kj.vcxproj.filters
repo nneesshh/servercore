@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{3248768a-1364-4818-a15b-2c50cca8b574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\capnp">
+      <UniqueIdentifier>{7d7c6bbb-00aa-4aa2-a1d0-4ec78f6f47ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\capnp\kj">
+      <UniqueIdentifier>{1047fe59-dacc-47a7-86d4-028ab81367f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\UsingCapnp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\capnp\dll_thread_local_storage_win32.h">
+      <Filter>src\capnp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\capnp\kj\kj_string.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_arena.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_array.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_async-io-win32.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_async-io.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_async-win32.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_async.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_common.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_debug.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_exception.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_io.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_memory.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_thread.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_time.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_main.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_mutex.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_refcount.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_string-tree.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\kj\kj_units.cc">
+      <Filter>src\capnp\kj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UsingCapnp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
