@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{3248768a-1364-4818-a15b-2c50cca8b574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base">
+      <UniqueIdentifier>{68d5da3d-9338-40b7-96cc-fac65b103756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base\concurrent">
+      <UniqueIdentifier>{3745134c-63b8-48df-8085-518ace7c478a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\io">
+      <UniqueIdentifier>{e1e66714-dcda-4a58-9e3e-f244512e993b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\capnp">
+      <UniqueIdentifier>{3caf631d-ac0d-48d1-b1d4-a4fe07c65fe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty">
+      <UniqueIdentifier>{4a4241e2-c6b6-4682-b451-cb86e61b4a53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft">
+      <UniqueIdentifier>{033b4100-732a-4139-b38e-03d94152df2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios">
+      <UniqueIdentifier>{88643b46-f9be-4691-a6f1-af088b740f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src">
+      <UniqueIdentifier>{fe28153c-7041-4b14-b743-ec290af99dbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src\core">
+      <UniqueIdentifier>{8b37b88b-a238-4bc2-a3f7-d6c62e681c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src\inserters">
+      <UniqueIdentifier>{b03cb37a-a4a3-49ee-a78e-ed4f0d64f1e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src\util">
+      <UniqueIdentifier>{175cdbc1-aca6-4891-ab0a-5331ed1444cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src\backends">
+      <UniqueIdentifier>{32de16a8-14a2-4689-b49d-830550705a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src\frontends">
+      <UniqueIdentifier>{2e94afcb-41de-4e46-8537-3ad93d60d238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\FastFormat">
+      <UniqueIdentifier>{7c36e7fd-970e-478a-946f-db5a8af753dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\FastFormat\src">
+      <UniqueIdentifier>{2883497d-17e7-4094-b0f5-3dbd5c8bdfb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\FastFormat\src\bitbucket">
+      <UniqueIdentifier>{d7d56c30-518b-41b4-9c82-4f10ae90bf25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\FastFormat\src\inserters">
+      <UniqueIdentifier>{d52c9c96-43e7-4f9a-9e67-8036c9f9b7a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\log">
+      <UniqueIdentifier>{4afed0d7-1323-4d3a-85e0-2e6fca2522fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thirdparty\stlsoft\pantheios\src\b64">
+      <UniqueIdentifier>{715229bf-43c5-4f79-bdf1-1f8d813eaadf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base\timingwheel">
+      <UniqueIdentifier>{3bd7c713-22b3-4876-9177-5df98fed23f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base\timingwheel\timeout">
+      <UniqueIdentifier>{20fa892e-d139-47bf-88b6-5f372cefed38}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\base\bip_buf.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\concurrent\readerwriterqueue.h">
+      <Filter>src\base\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\concurrent\atomicops.h">
+      <Filter>src\base\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\CamelReaderWriterQueue.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\nx_array.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\nx_buf.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\mysnprintf.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\fast_memcpy.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\crc64.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\endian.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Heartbeat.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\IHeartbeat.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\platform_utilities.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\platform_types.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\SimpleCalendar.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\MyMacros.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\SimpleTimer.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ServerCore.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\UsingServerCore.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\servercore_extern.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\servercore_service_def.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\IServerCore.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ServerCoreRootContextDef.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\io\KjIoContext.hpp">
+      <Filter>src\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\io\KjPipeEndpointIoContext.hpp">
+      <Filter>src\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\thirdparty\stlsoft\FastFormat\src\ximpl_core.hpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\StdPanLog.h">
+      <Filter>src\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\StdLog.h">
+      <Filter>src\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\StdLogLevelDef.h">
+      <Filter>src\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\timingwheel\timeout\timeout-debug.h">
+      <Filter>src\base\timingwheel\timeout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\timingwheel\timeout\timeout.h">
+      <Filter>src\base\timingwheel\timeout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ITimeoutEventHub.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TimeoutEventHub.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\base\bip_buf.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\CamelReaderWriterQueue.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\nx_array.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\nx_buf.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\mysnprintf.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\fast_memcpy.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\endian.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\crc64.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Heartbeat.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\platform_utilities.c">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\SimpleCalendar.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\SimpleTimer.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ServerCore.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ServerCorePlugin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UsingServerCore.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ServerCoreRootContextDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\io\KjIoContext.cpp">
+      <Filter>src\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\io\KjPipeEndpointIoContext.cpp">
+      <Filter>src\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dllmain.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cpp">
+      <Filter>src\capnp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\_pan_exception.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.deprecated.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.exitprocess.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.logputs.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\auto.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\logprintf.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\args.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\b64.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\blob.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\boolean.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\hostid.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\integer.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\interval.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\m2w.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\pointer.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\processid.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\real.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\slice.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\stream_character.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\threadid.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\bailout.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\be.context.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\be.parse.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\core.apidefs.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\date_elements_to_string.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\hostname.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\init_code_strings.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\severity_strings.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\snprintf.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\strdup.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\strnlen.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_time.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.processid.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.strnlen.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.threadid.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\be.N.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\bec.file.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\bec.fprintf.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\frontends\fe.N.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\frontends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_api.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_enum_strings.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_fmt_cache.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_fmt_spec_defect_handlers.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_init_code_strings.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_memory_pool.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_replacements.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_snprintf.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\bitbucket\_fastformat_bitbucket.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src\bitbucket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\inserters\_fastformat_plural.cpp">
+      <Filter>src\thirdparty\stlsoft\FastFormat\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\StdPanLog.cpp">
+      <Filter>src\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\b64\_pan_b64.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\b64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\timingwheel\timeout\timeout.c">
+      <Filter>src\base\timingwheel\timeout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\timingwheel\timeout\timeout-bitops.c">
+      <Filter>src\base\timingwheel\timeout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TimeoutEventHub.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="servercore.def" />
+  </ItemGroup>
+</Project>

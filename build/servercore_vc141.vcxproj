@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\base\ITimeoutEventHub.h" />
+    <ClInclude Include="..\src\base\timingwheel\timeout\timeout-debug.h" />
+    <ClInclude Include="..\src\base\timingwheel\timeout\timeout.h" />
+    <ClInclude Include="..\src\log\StdLog.h" />
+    <ClInclude Include="..\src\log\StdLogLevelDef.h" />
+    <ClInclude Include="..\src\log\StdPanLog.h" />
+    <ClInclude Include="..\src\thirdparty\stlsoft\FastFormat\src\ximpl_core.hpp" />
+    <ClInclude Include="..\src\base\bip_buf.h" />
+    <ClInclude Include="..\src\base\CamelReaderWriterQueue.h" />
+    <ClInclude Include="..\src\base\concurrent\atomicops.h" />
+    <ClInclude Include="..\src\base\concurrent\readerwriterqueue.h" />
+    <ClInclude Include="..\src\base\crc64.h" />
+    <ClInclude Include="..\src\base\endian.h" />
+    <ClInclude Include="..\src\base\fast_memcpy.h" />
+    <ClInclude Include="..\src\base\servercore_extern.h" />
+    <ClInclude Include="..\src\base\servercore_service_def.h" />
+    <ClInclude Include="..\src\base\IHeartbeat.h" />
+    <ClInclude Include="..\src\base\IServerCore.h" />
+    <ClInclude Include="..\src\base\MyMacros.h" />
+    <ClInclude Include="..\src\base\mysnprintf.h" />
+    <ClInclude Include="..\src\base\nx_array.h" />
+    <ClInclude Include="..\src\base\nx_buf.h" />
+    <ClInclude Include="..\src\base\platform_types.h" />
+    <ClInclude Include="..\src\base\platform_utilities.h" />
+    <ClInclude Include="..\src\base\SimpleCalendar.h" />
+    <ClInclude Include="..\src\base\SimpleTimer.h" />
+    <ClInclude Include="..\src\Heartbeat.h" />
+    <ClInclude Include="..\src\io\KjIoContext.hpp" />
+    <ClInclude Include="..\src\io\KjPipeEndpointIoContext.hpp" />
+    <ClInclude Include="..\src\ServerCoreRootContextDef.hpp" />
+    <ClInclude Include="..\src\ServerCore.h" />
+    <ClInclude Include="..\src\TimeoutEventHub.h" />
+    <ClInclude Include="..\src\UsingServerCore.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\base\timingwheel\timeout\timeout-bitops.c" />
+    <ClCompile Include="..\src\base\timingwheel\timeout\timeout.c" />
+    <ClCompile Include="..\src\log\StdPanLog.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\bitbucket\_fastformat_bitbucket.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\inserters\_fastformat_plural.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_api.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_enum_strings.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_fmt_cache.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_fmt_spec_defect_handlers.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_init_code_strings.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_memory_pool.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_replacements.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\FastFormat\src\_fastformat_snprintf.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\b64\_pan_b64.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\be.N.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\bec.file.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\bec.fprintf.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.deprecated.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.exitprocess.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.logputs.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\auto.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\logprintf.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\frontends\fe.N.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\args.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\b64.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\blob.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\boolean.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\hostid.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\integer.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\interval.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\m2w.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\pointer.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\processid.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\real.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\slice.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\stream_character.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\threadid.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\_pan_exception.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\bailout.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\be.context.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\be.parse.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\core.apidefs.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\date_elements_to_string.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\hostname.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\init_code_strings.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\severity_strings.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\snprintf.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\strdup.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\strnlen.cpp" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.processid.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.strnlen.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.threadid.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_time.cpp" />
+    <ClCompile Include="..\src\base\bip_buf.c" />
+    <ClCompile Include="..\src\base\CamelReaderWriterQueue.cpp" />
+    <ClCompile Include="..\src\base\crc64.c" />
+    <ClCompile Include="..\src\base\endian.c" />
+    <ClCompile Include="..\src\base\fast_memcpy.c" />
+    <ClCompile Include="..\src\base\mysnprintf.c" />
+    <ClCompile Include="..\src\base\nx_array.c" />
+    <ClCompile Include="..\src\base\nx_buf.c" />
+    <ClCompile Include="..\src\base\platform_utilities.c" />
+    <ClCompile Include="..\src\base\SimpleCalendar.cpp" />
+    <ClCompile Include="..\src\base\SimpleTimer.cpp" />
+    <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cpp" />
+    <ClCompile Include="..\src\dllmain.cpp" />
+    <ClCompile Include="..\src\Heartbeat.cpp" />
+    <ClCompile Include="..\src\io\KjIoContext.cpp" />
+    <ClCompile Include="..\src\io\KjPipeEndpointIoContext.cpp" />
+    <ClCompile Include="..\src\ServerCoreRootContextDef.cpp" />
+    <ClCompile Include="..\src\ServerCore.cpp" />
+    <ClCompile Include="..\src\ServerCorePlugin.cpp" />
+    <ClCompile Include="..\src\TimeoutEventHub.cpp" />
+    <ClCompile Include="..\src\UsingServerCore.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="servercore.def" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1BB66829-1CE1-4126-B515-8335BF74048F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SgServer</RootNamespace>
+    <ProjectName>servercore</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>C:\Program Files (x86)\Windows Kits\8.1\Include\shared;$(IncludePath)</IncludePath>
+    <OutDir>..\..\..\bin_sandbox\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectName).dir\obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Program Files (x86)\Windows Kits\8.1\Include\shared;$(IncludePath)</IncludePath>
+    <OutDir>..\..\..\bin_sandbox\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectName).dir\obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <AdditionalLibraryDirectories>../lib/$(Configuration);C:\Program Files (x86)\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>capnp_kj.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <ShowProgress>NotSet</ShowProgress>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(ProjectDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ModuleDefinitionFile>servercore.def</ModuleDefinitionFile>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;../src/thirdparty/stlsoft/STLSoft/include;../src/thirdparty/stlsoft/FastFormat/include;../src/thirdparty/stlsoft/pantheios/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MY_SERVERCORE_BUILDING_SHARED;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;HAVE_STRUCT_TIMESPEC;NO_SYS_UN;NO_STRNDUP;_CRT_SECURE_NO_WARNINGS;_ENABLE_ATOMIC_ALIGNMENT_FIX;_CONSOLE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;../src/thirdparty/stlsoft/STLSoft/include;../src/thirdparty/stlsoft/FastFormat/include;../src/thirdparty/stlsoft/pantheios/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MY_SERVERCORE_BUILDING_SHARED;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;HAVE_STRUCT_TIMESPEC;NO_SYS_UN;NO_STRNDUP;_CRT_SECURE_NO_WARNINGS;_ENABLE_ATOMIC_ALIGNMENT_FIX;_CONSOLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../lib/$(Configuration);C:\Program Files (x86)\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>capnp_kj.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <ShowProgress>NotSet</ShowProgress>
+      <ImportLibrary>$(ProjectDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ModuleDefinitionFile>servercore.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

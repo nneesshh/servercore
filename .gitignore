@@ -41,3 +41,8 @@
 *.ilk
 *.db
 *.opendb
+*.exp
+
+\.vscode/
+\.vs/
+\.sconsign\.dblite
