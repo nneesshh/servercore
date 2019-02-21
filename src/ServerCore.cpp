@@ -35,7 +35,6 @@ pipe_trunk_read_loop(kj::AsyncIoStream& pipe, void *buf, size_t bufsize, std::fu
 */
 CServerCore::CServerCore(servcercore_param_t *param)
 	: _param(*param)
-	, _refSimpleTimer(static_cast<CSimpleTimer *>(_param._timer))
 	, _tsCommon(NewTaskSet(*this)) {
 
 #ifdef WIN32
@@ -52,7 +51,7 @@ CServerCore::CServerCore(servcercore_param_t *param)
 	servcercore_init_log(&_param);
 
 	_timeoutEventHub = new CTimeoutEventHub();
-	_heartbeat = new CHeartbeat(_param._sAppPath, *_refSimpleTimer, *this);
+	_heartbeat = new CHeartbeat(_param._sAppPath, *static_cast<CSimpleTimer *>(_param._timer), *this);
 }
 
 //------------------------------------------------------------------------------

@@ -230,9 +230,6 @@
     <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cpp">
       <Filter>src\capnp</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\_pan_exception.cpp">
-      <Filter>src\thirdparty\stlsoft\pantheios\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.cpp">
       <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
     </ClCompile>
@@ -394,6 +391,9 @@
     </ClCompile>
     <ClCompile Include="..\src\TimeoutEventHub.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\_pan_exception.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

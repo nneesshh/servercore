@@ -14,7 +14,6 @@
 #include "../UsingCapnp.h"
 #include "../log/StdLog.h"
 
-#include "SimpleTimer.h"
 #include "ITimeoutEventHub.h"
 #include "IHeartbeat.h"
 #include "../io/KjPipeEndpointIoContext.hpp"
@@ -51,9 +50,10 @@ public:
 	///
 	virtual void *				GetCtx() = 0;
 	virtual StdLog *			GetLogHandler() = 0;
-	virtual CSimpleTimer&		SimpleTimer() = 0;
-	virtual IHeartbeat&			Heartbeat() = 0;
+
 	virtual ITimeoutEventHub&	TimeoutEventHub() = 0;
+
+	virtual IHeartbeat&			Heartbeat() = 0;
 
 	///
 	virtual void				Shutdown() = 0;

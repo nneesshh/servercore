@@ -107,17 +107,6 @@ CSimpleCalendar::Init(time_t tmNow) {
 /**
 
 */
-void
-CSimpleCalendar::Update(time_t tmNow) {
-	if (tmNow - _rule._today >= DAY_SECONDS) {
-		Init(_rule._today + DAY_SECONDS);
-	}
-}
-
-//------------------------------------------------------------------------------
-/**
-
-*/
 bool
 CSimpleCalendar::IsYesterday(const char *sDay) {
 	return IsYesterday(StringToDate(sDay));

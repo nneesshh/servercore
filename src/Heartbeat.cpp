@@ -74,6 +74,7 @@ CHeartbeat::CHeartbeat(const std::string& appname, CSimpleTimer& timer, IServerC
 	: _appname(appname)
 	, _refTimer(timer)
 	, _refServercore(servercore)
+	, _calendar(time(nullptr))
 	, _tsCommon(servercore.NewTaskSet(*this))
 	, _tsDaemon(servercore.NewTaskSet(*this)) {
 	//
@@ -82,14 +83,13 @@ CHeartbeat::CHeartbeat(const std::string& appname, CSimpleTimer& timer, IServerC
 	_cbUpdate = func_upate_default;
 
 	_stats._now_system_time_in_ms = _refTimer.GetNowSystemTimeInMs();
-	_stats._total_elapsed_in_ms = _refTimer.GetElapsedInMs();
+	_stats._total_elapsed_in_ms = _refTimer.GetElapsedInMs(_stats._now_system_time_in_ms);
 
 	_stats._elapsed_in_ms = 1;
 	_stats._sleep_in_ms = 0;
 
 	_stats._fps = 1.0f;
 	_stats._spf = 1.0f;
-
 }
 
 //------------------------------------------------------------------------------
@@ -249,11 +249,16 @@ CHeartbeat::MainUpdateLoop(kj::PromiseFulfiller<void> *fulfiller) {
 */
 void
 CHeartbeat::BeforeHeartbeat() {
+	//
 	unsigned int last_total_elapsed_in_ms = _stats._total_elapsed_in_ms;
+	uint64_t now_in_ms = _refTimer.GetNowSystemTimeInMs();
+
+	// update calendar time -- calendar must update first, because other timer in handler would depend on it
+	_calendar.UpdateInMs(now_in_ms);
 
 	// elapsed and fps
-	_stats._now_system_time_in_ms = _refTimer.GetNowSystemTimeInMs();
-	_stats._total_elapsed_in_ms = _refTimer.GetElapsedInMs();
+	_stats._now_system_time_in_ms = now_in_ms;
+	_stats._total_elapsed_in_ms = _refTimer.GetElapsedInMs(_stats._now_system_time_in_ms);
 	_stats._elapsed_in_ms = _stats._total_elapsed_in_ms - last_total_elapsed_in_ms;
 
 	_stats._fps = _refTimer.GetFPS(_stats._total_elapsed_in_ms);
@@ -279,6 +284,10 @@ CHeartbeat::AfterHeartbeat() {
 	else {
 		_stats._sleep_in_ms = 0;
 	}
+
+	// update calendar time -- calendar must update first, because other timer in handler would depend on it
+	time_t tmNow = time(nullptr);
+	_calendar.Update(tmNow);
 }
 
 //------------------------------------------------------------------------------

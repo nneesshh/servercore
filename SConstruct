@@ -1,6 +1,6 @@
 #!python
 
-import os, subprocess, platform, sys
+import os, subprocess, platform, sys, glob
 
 
 def add_sources(sources, dir, extension):
@@ -30,16 +30,18 @@ opts.Add(BoolVariable('use_mingw', 'Use the MinGW compiler - only effective on W
 opts.Add(EnumVariable('target', 'Compilation target', 'debug', ('debug', 'release')))
 opts.Add(PathVariable('headers_dir', 'Path to the directory containing header files', 'plugin_headers'))
 
-env = None
-is64 = sys.maxsize > 2**32
-if is64:
-    env = Environment(TARGET_ARCH='amd64')
+bits = opts.args.get('bits', 'default')
+if bits == 'default':
+    target_arch = 'x86'
+elif bits == '64':
+    target_arch = 'amd64'
 else:
-    env = Environment(TARGET_ARCH='x86')
-
+    target_arch ='x86'
+env = Environment(TARGET_ARCH=target_arch)
 opts.Update(env)
 Help(opts.GenerateHelpText(env))
 
+is64 = sys.maxsize > 2**32
 if env['bits'] == 'default':
     env['bits'] = '64' if is64 else '32'
 
@@ -97,8 +99,32 @@ elif env['platform'] == 'windows':
         env.Append(CCFLAGS=['-g', '-O3', '-std=c++14', '-Wwrite-strings'])
         env.Append(LINKFLAGS=['--static', '-Wl,--no-undefined', '-static-libgcc', '-static-libstdc++'])
 
+env.Append(CCFLAGS=['/DMY_SERVERCORE_BUILDING_SHARED',
+                    '/D__STDC_CONSTANT_MACROS',
+                    '/D__STDC_FORMAT_MACROS',
+                    '/DHAVE_STRUCT_TIMESPEC',
+                    '/DNO_SYS_UN',
+                    '/DNO_STRNDUP',
+                    '/D_CRT_SECURE_NO_WARNINGS',
+                    '/D_ENABLE_ATOMIC_ALIGNMENT_FIX',
+                    '/D_CONSOLE']
+)
 
-env.Append(CPPPATH=['.', env['headers_dir'], 'include', 'include/core'])
+cpp_paths = ['.', env['headers_dir'], 'include', 'include/core', 
+            'src/thirdparty/stlsoft/STLSoft/include',
+            'src/thirdparty/stlsoft/FastFormat/include',
+            'src/thirdparty/stlsoft/pantheios/include'
+            ]
+if host_platform == 'windows' and not env['use_mingw']:
+    cpp_paths.append('C:/Program Files (x86)/Visual Leak Detector/include')
+
+env.Append(CPPPATH=cpp_paths)
+
+lib_paths = []
+if host_platform == 'windows' and not env['use_mingw']:
+    lib_paths = ['C:/Program Files (x86)/Visual Leak Detector/lib/{}'.format(sys.platform)]
+
+env.Append(LIBPATH=lib_paths)
 
 # Generate bindings?
 json_api_file = ''
@@ -115,20 +141,57 @@ if ARGUMENTS.get('generate_bindings', 'no') == 'yes':
 
     binding_generator.generate_bindings(json_api_file)
 
+# capnp_kj
 capnp_sources = []
 capnp_sources.append('src/UsingCapnp.cpp')
 add_sources(capnp_sources, 'src/capnp', 'cpp')
 add_sources(capnp_sources, 'src/capnp/kj', 'cc')
 
-capnp_library = env.StaticLibrary(
+capnp_kj = env.StaticLibrary(
     target='lib/' + env['target'] + '/' + 'capnp_kj', source=capnp_sources
 )
-Default(capnp_library)
+env.Append(LIBPATH=['lib/' + env['target']])
 
+print("==============================")
+print(env['LIBPATH'])
+
+# servercore
+sources = []
+add_sources(sources, 'src', 'cpp')
+add_sources(sources, 'src/base', 'cpp')
+add_sources(sources, 'src/base', 'c')
+
+sources.append('src/base/timingwheel/timeout/timeout.c')
+sources.append('src/base/timingwheel/timeout/timeout-bitops.c')
+
+add_sources(sources, 'src/capnp', 'cpp')
+add_sources(sources, 'src/io', 'cpp')
+add_sources(sources, 'src/log', 'cpp')
+
+add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src', 'cpp')
+add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src/bitbucket', 'cpp')
+add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src/inserters', 'cpp')
+
+pantheios_sources = env.Glob('src/thirdparty/stlsoft/pantheios/src/inserters/*.cpp',
+                            strings=True,
+                            exclude='src/thirdparty/stlsoft/pantheios/src/inserters/*.cpp')
+sources = sources + pantheios_sources
+
+servercore = env.SharedLibrary(
+    target='lib/' + env['target'] + '/' + 'servercore',
+    source=sources,
+    LIBS = ['capnp_kj']
+)
+
+'''
 sources = []
 #add_sources(sources, 'src/core', 'cpp')
 add_sources(sources, 'src', 'cpp')
 
 library = env.StaticLibrary(
-    target='bin/' + 'libgodot-cpp.{}.{}.{}'.format(env['platform'], env['target'], env['bits']), source=sources
+    target='bin/' + 'libgodot-cpp.{}.{}.{}'.format(env['platform'], env['target'], env['bits']),
+    source=sources,
 )
+'''
+
+Default(capnp_kj, servercore)

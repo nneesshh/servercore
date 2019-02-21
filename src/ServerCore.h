@@ -36,10 +36,6 @@ public:
 		return servcercore_get_log();
 	}
 
-	virtual CSimpleTimer&		SimpleTimer() override {
-		return *_refSimpleTimer;
-	}
-
 	virtual ITimeoutEventHub&	TimeoutEventHub() override {
 		return *_timeoutEventHub;
 	}
@@ -81,7 +77,6 @@ private:
 	bool				  _bShutdown = false;
 
 	servcercore_param_t   _param;
-	CSimpleTimer         *_refSimpleTimer; // singleton can't cross dll (so), so we must keep the timer reference
 
 	kj::Own<kj::TaskSet>  _tsCommon;
 

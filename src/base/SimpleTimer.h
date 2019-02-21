@@ -46,12 +46,12 @@ public:
 		return (uint64_t)std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	}
 
-	static time_t				GetNowSystemTime() {
-		return (time_t)std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-	}
-
 	static int64_t				GetElapsedInMs() {
 		return CSimpleTimer::GetNowSystemTimeInMs() - s_base;
+	}
+
+	static int64_t				GetElapsedInMs(uint64_t nowInMs) {
+		return nowInMs - s_base;
 	}
 
 private:

@@ -9,7 +9,9 @@
 #include <functional>
 
 #include "../UsingCapnp.h"
+
 #include "SimpleTimer.h"
+#include "SimpleCalendar.h"
 
 #include "servercore_extern.h"
 
@@ -42,6 +44,10 @@ public:
 	virtual void				Quit() = 0;
 
 	virtual void				StartDaemon() = 0;
+
+	virtual CSimpleTimer&		SimpleTimer() = 0;
+	virtual CSimpleCalendar&	SimpleCalendar() = 0;
+
 };
 
 /*EOF*/

@@ -57,7 +57,18 @@ public:
 	~CSimpleCalendar();
 
 	void						Init(time_t tmNow);
-	void						Update(time_t tmNow);
+
+	void						Update(time_t tmNow) {
+		if (tmNow - _rule._today >= DAY_SECONDS) {
+			Init(_rule._today + DAY_SECONDS);
+		}
+	}
+
+	void						UpdateInMs(uint64_t nowInMs) {
+		if (nowInMs - _rule._today * 1000 >= DAY_SECONDS * 1000) {
+			Init(_rule._today + DAY_SECONDS);
+		}
+	}
 
 	calendar_rule_t *			GetCalendarRule() {
 		return &_rule;
