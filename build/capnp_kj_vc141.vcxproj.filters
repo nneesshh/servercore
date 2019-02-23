@@ -77,7 +77,7 @@
     <ClCompile Include="..\src\capnp\kj\kj_units.cc">
       <Filter>src\capnp\kj</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\UsingCapnp.cpp">
+    <ClCompile Include="..\src\UsingCapnp.cc">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

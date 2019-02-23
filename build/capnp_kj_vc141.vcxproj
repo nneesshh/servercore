@@ -34,7 +34,7 @@
     <ClCompile Include="..\src\capnp\kj\kj_thread.cc" />
     <ClCompile Include="..\src\capnp\kj\kj_time.cc" />
     <ClCompile Include="..\src\capnp\kj\kj_units.cc" />
-    <ClCompile Include="..\src\UsingCapnp.cpp" />
+    <ClCompile Include="..\src\UsingCapnp.cc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A03CCB40-7A21-4B18-B674-F90FA48215E1}</ProjectGuid>

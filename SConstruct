@@ -3,10 +3,15 @@
 import os, subprocess, platform, sys, glob
 
 
-def add_sources(sources, dir, extension):
-  for f in os.listdir(dir):
-      if f.endswith('.' + extension):
-          sources.append(dir + '/' + f)
+def add_sources(sources, dir, extension, ignores=[]):
+    for f in os.listdir(dir):
+        if f.endswith('.' + extension):
+            ignore = False
+            for i in ignores:
+                if f.endswith(i):
+                    ignore = True
+            if not ignore:
+                sources.append(dir + '/' + f)
 
 # Try to detect the host platform automatically
 # This is used if no `platform` argument is passed
@@ -28,7 +33,7 @@ opts.Add(BoolVariable('use_mingw', 'Use the MinGW compiler - only effective on W
 
 # Must be the same setting as used for cpp_bindings
 opts.Add(EnumVariable('target', 'Compilation target', 'debug', ('debug', 'release')))
-opts.Add(PathVariable('headers_dir', 'Path to the directory containing header files', 'plugin_headers'))
+opts.Add(PathVariable('headers_dir', 'Path to the directory containing header files', 'addons'))
 
 bits = opts.args.get('bits', 'default')
 if bits == 'default':
@@ -143,8 +148,7 @@ if ARGUMENTS.get('generate_bindings', 'no') == 'yes':
 
 # capnp_kj
 capnp_sources = []
-capnp_sources.append('src/UsingCapnp.cpp')
-add_sources(capnp_sources, 'src/capnp', 'cpp')
+capnp_sources.append('src/UsingCapnp.cc')
 add_sources(capnp_sources, 'src/capnp/kj', 'cc')
 
 capnp_kj = env.StaticLibrary(
@@ -164,7 +168,6 @@ add_sources(sources, 'src/base', 'c')
 sources.append('src/base/timingwheel/timeout/timeout.c')
 sources.append('src/base/timingwheel/timeout/timeout-bitops.c')
 
-add_sources(sources, 'src/capnp', 'cpp')
 add_sources(sources, 'src/io', 'cpp')
 add_sources(sources, 'src/log', 'cpp')
 
@@ -174,7 +177,7 @@ add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src/inserters', 'cpp')
 
 pantheios_sources = env.Glob('src/thirdparty/stlsoft/pantheios/src/inserters/*.cpp',
                             strings=True,
-                            exclude='src/thirdparty/stlsoft/pantheios/src/inserters/*.cpp')
+                            exclude='')
 sources = sources + pantheios_sources
 
 servercore = env.SharedLibrary(
