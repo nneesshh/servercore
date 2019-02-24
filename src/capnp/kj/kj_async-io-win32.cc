@@ -47,7 +47,7 @@
 
 namespace kj {
 
-namespace _ {  // private
+namespace {  // private
 
 struct WinsockInitializer {
   WinsockInitializer() {
@@ -747,7 +747,7 @@ Promise<Array<SocketAddress>> SocketAddress::lookupHost(
   //   docs. Never mind that DNS itself is ASCII...
 
   SOCKET fds[2];
-  KJ_WINSOCK(_::win32Socketpair(fds));
+  KJ_WINSOCK(win32Socketpair(fds));
 
   auto input = lowLevel.wrapInputFd(fds[0], NEW_FD_FLAGS);
 
@@ -1091,7 +1091,7 @@ public:
 
   OneWayPipe newOneWayPipe() override {
     SOCKET fds[2];
-    KJ_WINSOCK(_::win32Socketpair(fds));
+    KJ_WINSOCK(win32Socketpair(fds));
     auto in = lowLevel.wrapSocketFd(fds[0], NEW_FD_FLAGS);
     auto out = lowLevel.wrapOutputFd(fds[1], NEW_FD_FLAGS);
     in->shutdownWrite();
@@ -1100,7 +1100,7 @@ public:
 
   TwoWayPipe newTwoWayPipe() override {
     SOCKET fds[2];
-    KJ_WINSOCK(_::win32Socketpair(fds));
+    KJ_WINSOCK(win32Socketpair(fds));
     return TwoWayPipe { {
       lowLevel.wrapSocketFd(fds[0], NEW_FD_FLAGS),
       lowLevel.wrapSocketFd(fds[1], NEW_FD_FLAGS)
@@ -1114,7 +1114,7 @@ public:
   PipeThread newPipeThread(
       Function<void(AsyncIoProvider&, AsyncIoStream&, WaitScope&)> startFunc) override {
     SOCKET fds[2];
-    KJ_WINSOCK(_::win32Socketpair(fds));
+    KJ_WINSOCK(win32Socketpair(fds));
 
     int threadFd = fds[1];
     KJ_ON_SCOPE_FAILURE(closesocket(threadFd));
@@ -1146,7 +1146,7 @@ Own<AsyncIoProvider> newAsyncIoProvider(LowLevelAsyncIoProvider& lowLevel) {
 }
 
 AsyncIoContext setupAsyncIo() {
-  _::initWinsockOnce();
+  initWinsockOnce();
 
   auto lowLevel = heap<LowLevelAsyncIoProviderImpl>();
   auto ioProvider = kj::heap<AsyncIoProviderImpl>(*lowLevel);
