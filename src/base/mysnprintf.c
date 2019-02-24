@@ -165,9 +165,7 @@
  */
 #include "mysnprintf.h"
 
-#ifdef _WIN32
 #include "fast_memcpy.h"
-#endif
 
 static const char atoi_tab[4000] = {
 	'0','0','0',0, '0','0','1',0, '0','0','2',0, '0','0','3',0, '0','0','4',0,
@@ -542,6 +540,7 @@ static char scratch_buffer[32] = {
 #if HAVE_STDDEF_H
 #include <stddef.h>	/* For ptrdiff_t. */
 #endif	/* HAVE_STDDEF_H */
+#define HAVE_STDINT_H 1
 #if HAVE_STDINT_H
 #include <stdint.h>	/* For intmax_t. */
 #endif	/* HAVE_STDINT_H */
