@@ -36,6 +36,8 @@ opts.Add(EnumVariable('target', 'Compilation target', 'release', ('debug', 'rele
 opts.Add(PathVariable('headers_dir', 'Path to the directory containing header files', 'addons'))
 
 bits = opts.args.get('bits', 'default')
+print("bits: " + bits)
+
 if bits == 'default':
     target_arch = 'x86'
 elif bits == '64':
@@ -51,10 +53,6 @@ print(env['platform'])
 
 print("================ TARGET_ARCH ================")
 print(env['TARGET_ARCH'])
-
-is64 = sys.maxsize > 2**32
-if env['bits'] == 'default':
-    env['bits'] = '64' if is64 else '32'
 
 if env['platform'] == 'linux':
     if env['use_llvm']:
@@ -117,17 +115,28 @@ print(env['bits'])
 print("================ target ================")
 print(env['target'])
        
+if env['platform'] == 'linux':
+    env.Append(CCFLAGS=['-D MY_SERVERCORE_BUILDING_SHARED',
+                        '-D __STDC_CONSTANT_MACROS',
+                        '-D __STDC_FORMAT_MACROS',
+                        '-D HAVE_STRUCT_TIMESPEC',
+                        '-D NO_SYS_UN',
+                        '-D NO_STRNDUP',
+                        '-D _ENABLE_ATOMIC_ALIGNMENT_FIX',
+                        '-D _CONSOLE']
+    )
 
-env.Append(CCFLAGS=['/DMY_SERVERCORE_BUILDING_SHARED',
-                    '/D__STDC_CONSTANT_MACROS',
-                    '/D__STDC_FORMAT_MACROS',
-                    '/DHAVE_STRUCT_TIMESPEC',
-                    '/DNO_SYS_UN',
-                    '/DNO_STRNDUP',
-                    '/D_CRT_SECURE_NO_WARNINGS',
-                    '/D_ENABLE_ATOMIC_ALIGNMENT_FIX',
-                    '/D_CONSOLE']
-)
+elif env['platform'] == 'windows':
+    env.Append(CCFLAGS=['/DMY_SERVERCORE_BUILDING_SHARED',
+                        '/D__STDC_CONSTANT_MACROS',
+                        '/D__STDC_FORMAT_MACROS',
+                        '/DHAVE_STRUCT_TIMESPEC',
+                        '/DNO_SYS_UN',
+                        '/DNO_STRNDUP',
+                        '/D_CRT_SECURE_NO_WARNINGS',
+                        '/D_ENABLE_ATOMIC_ALIGNMENT_FIX',
+                        '/D_CONSOLE']
+    )
 
 cpp_paths = ['.',env['headers_dir'], 'include', 'include/core', 
             'src',
@@ -164,7 +173,7 @@ if ARGUMENTS.get('generate_bindings', 'no') == 'yes':
 # capnp_kj
 capnp_sources = []
 capnp_sources.append('src/UsingCapnp.cc')
-add_sources(capnp_sources, 'src/capnp', 'cc')
+capnp_sources.append('src/capnp/dll_thread_local_storage.cc')
 add_sources(capnp_sources, 'src/capnp/kj', 'cc')
 
 capnp_kj = env.StaticLibrary(

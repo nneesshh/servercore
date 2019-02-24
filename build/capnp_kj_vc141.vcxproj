@@ -11,11 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\capnp\dll_thread_local_storage_win32.h" />
+    <ClInclude Include="..\src\capnp\dll_thread_local_storage.h" />
     <ClInclude Include="..\src\UsingCapnp.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cc" />
+    <ClCompile Include="..\src\capnp\dll_thread_local_storage.cc" />
     <ClCompile Include="..\src\capnp\kj\kj_arena.cc" />
     <ClCompile Include="..\src\capnp\kj\kj_array.cc" />
     <ClCompile Include="..\src\capnp\kj\kj_async-io-win32.cc" />

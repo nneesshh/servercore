@@ -155,7 +155,7 @@ private:
 
 template <typename T>
 Promise<T> Timer::timeoutAt(TimePoint time, Promise<T>&& promise) {
-  return promise.exclusiveJoin(atTime(time, timer_name).then([]() -> kj::Promise<T> {
+  return promise.exclusiveJoin(atTime(time).then([]() -> kj::Promise<T> {
     return makeTimeoutException();
   }));
 }

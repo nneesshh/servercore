@@ -50,7 +50,7 @@
 #include <pthread.h>
 #endif
 
-#include "../dll_thread_local_storage_win32.h"
+#include "../dll_thread_local_storage.h"
 
 namespace kj {
 

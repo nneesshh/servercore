@@ -15,7 +15,7 @@
     <ClInclude Include="..\src\UsingCapnp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\capnp\dll_thread_local_storage_win32.h">
+    <ClInclude Include="..\src\capnp\dll_thread_local_storage.h">
       <Filter>src\capnp</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClCompile Include="..\src\UsingCapnp.cc">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cc">
+    <ClCompile Include="..\src\capnp\dll_thread_local_storage.cc">
       <Filter>src\capnp</Filter>
     </ClCompile>
   </ItemGroup>
