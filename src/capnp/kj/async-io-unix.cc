@@ -47,7 +47,7 @@
 
 namespace kj {
 
-namespace {
+namespace _ {
 
 void setNonblocking(int fd) {
   int flags;

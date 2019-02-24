@@ -174,7 +174,11 @@ if ARGUMENTS.get('generate_bindings', 'no') == 'yes':
 capnp_sources = []
 capnp_sources.append('src/UsingCapnp.cc')
 capnp_sources.append('src/capnp/dll_thread_local_storage.cc')
-add_sources(capnp_sources, 'src/capnp/kj', 'cc')
+
+if env['platform'] == 'linux':
+    add_sources(capnp_sources, 'src/capnp/kj', 'cc', ['win32.cc'])
+elif env['platform'] == 'windows':
+    add_sources(capnp_sources, 'src/capnp/kj', 'cc', ['unix.cc'])
 
 capnp_kj = env.StaticLibrary(
     target='lib/' + env['target'] + '/' + 'capnp_kj', source=capnp_sources
