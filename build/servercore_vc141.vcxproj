@@ -101,9 +101,9 @@
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\snprintf.c" />
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\strdup.c" />
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\strnlen.cpp" />
-    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.processid.c" />
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.strnlen.c" />
-    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.threadid.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_processid.c" />
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_threadid.c" />
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_time.cpp" />
     <ClCompile Include="..\src\base\bip_buf.c" />
     <ClCompile Include="..\src\base\CamelReaderWriterQueue.cpp" />

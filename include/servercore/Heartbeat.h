@@ -42,6 +42,14 @@ public:
 
 	virtual void				StartDaemon() override;
 
+	virtual CSimpleTimer&		SimpleTimer() override {
+		return _refTimer;
+	}
+	
+	virtual CSimpleCalendar&	SimpleCalendar() override {
+		return _calendar;
+	}
+
 private:
 	kj::Promise<void>			MainUpdateLoop(kj::PromiseFulfiller<void> *fulfiller);
 
@@ -69,9 +77,11 @@ private:
 private:
 	volatile sig_atomic_t _quit = 0;
 
-	std::string   _appname;
-	CSimpleTimer& _refTimer;
-	IServerCore&  _refServercore;
+	std::string      _appname;
+	CSimpleTimer&	 _refTimer;
+	IServerCore&     _refServercore;
+
+	CSimpleCalendar  _calendar;
 
 	std::function<void(unsigned int, uint64_t)> _cbUpdate;
 

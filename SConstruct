@@ -32,7 +32,7 @@ opts.Add(BoolVariable('use_llvm', 'Use the LLVM compiler - only effective when t
 opts.Add(BoolVariable('use_mingw', 'Use the MinGW compiler - only effective on Windows', False))
 
 # Must be the same setting as used for cpp_bindings
-opts.Add(EnumVariable('target', 'Compilation target', 'debug', ('debug', 'release')))
+opts.Add(EnumVariable('target', 'Compilation target', 'release', ('debug', 'release')))
 opts.Add(PathVariable('headers_dir', 'Path to the directory containing header files', 'addons'))
 
 bits = opts.args.get('bits', 'default')

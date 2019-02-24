@@ -317,13 +317,7 @@
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_time.cpp">
       <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.processid.c">
-      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.strnlen.c">
-      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\util.threadid.c">
       <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
     </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\backends\be.N.c">
@@ -388,6 +382,12 @@
     </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\w2m.cpp">
       <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_threadid.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_processid.c">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
