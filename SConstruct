@@ -190,7 +190,12 @@ print(env['LIBPATH'])
 
 # servercore
 sources = []
-add_sources(sources, 'src', 'cpp')
+
+if env['platform'] == 'linux':
+    add_sources(sources, 'src', 'cpp', ['dllmain.cpp'])
+elif env['platform'] == 'windows':
+    add_sources(sources, 'src', 'cpp')
+
 add_sources(sources, 'src/base', 'cpp')
 add_sources(sources, 'src/base', 'c')
 add_sources(capnp_sources, 'src/capnp', 'cpp')
