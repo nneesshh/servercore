@@ -198,7 +198,6 @@ elif env['platform'] == 'windows':
 
 add_sources(sources, 'src/base', 'cpp')
 add_sources(sources, 'src/base', 'c')
-add_sources(capnp_sources, 'src/capnp', 'cpp')
 
 sources.append('src/base/timingwheel/timeout/timeout.c')
 sources.append('src/base/timingwheel/timeout/timeout-bitops.c')

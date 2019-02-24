@@ -87,9 +87,6 @@
     <ClInclude Include="..\src\base\mysnprintf.h">
       <Filter>src\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\base\fast_memcpy.h">
-      <Filter>src\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\crc64.h">
       <Filter>src\base</Filter>
     </ClInclude>
@@ -165,6 +162,9 @@
     <ClInclude Include="..\src\TimeoutEventHub.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\base\fast_memcpy.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\bip_buf.c">
@@ -180,9 +180,6 @@
       <Filter>src\base</Filter>
     </ClCompile>
     <ClCompile Include="..\src\base\mysnprintf.c">
-      <Filter>src\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\base\fast_memcpy.c">
       <Filter>src\base</Filter>
     </ClCompile>
     <ClCompile Include="..\src\base\endian.c">
@@ -388,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\util\_pan_processid.c">
       <Filter>src\thirdparty\stlsoft\pantheios\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\fast_memcpy.c">
+      <Filter>src\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

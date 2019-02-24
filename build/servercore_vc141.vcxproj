@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\base\fast_memcpy.h" />
     <ClInclude Include="..\src\base\ITimeoutEventHub.h" />
     <ClInclude Include="..\src\base\timingwheel\timeout\timeout-debug.h" />
     <ClInclude Include="..\src\base\timingwheel\timeout\timeout.h" />
@@ -24,7 +25,6 @@
     <ClInclude Include="..\src\base\concurrent\readerwriterqueue.h" />
     <ClInclude Include="..\src\base\crc64.h" />
     <ClInclude Include="..\src\base\endian.h" />
-    <ClInclude Include="..\src\base\fast_memcpy.h" />
     <ClInclude Include="..\src\base\servercore_extern.h" />
     <ClInclude Include="..\src\base\servercore_service_def.h" />
     <ClInclude Include="..\src\base\IHeartbeat.h" />
@@ -46,6 +46,7 @@
     <ClInclude Include="..\src\UsingServerCore.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\base\fast_memcpy.c" />
     <ClCompile Include="..\src\base\timingwheel\timeout\timeout-bitops.c" />
     <ClCompile Include="..\src\base\timingwheel\timeout\timeout.c" />
     <ClCompile Include="..\src\log\StdPanLog.cpp" />
@@ -109,7 +110,6 @@
     <ClCompile Include="..\src\base\CamelReaderWriterQueue.cpp" />
     <ClCompile Include="..\src\base\crc64.c" />
     <ClCompile Include="..\src\base\endian.c" />
-    <ClCompile Include="..\src\base\fast_memcpy.c" />
     <ClCompile Include="..\src\base\mysnprintf.c" />
     <ClCompile Include="..\src\base\nx_array.c" />
     <ClCompile Include="..\src\base\nx_buf.c" />
