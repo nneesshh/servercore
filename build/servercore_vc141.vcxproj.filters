@@ -13,9 +13,6 @@
     <Filter Include="src\io">
       <UniqueIdentifier>{e1e66714-dcda-4a58-9e3e-f244512e993b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\capnp">
-      <UniqueIdentifier>{3caf631d-ac0d-48d1-b1d4-a4fe07c65fe8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\thirdparty">
       <UniqueIdentifier>{4a4241e2-c6b6-4682-b451-cb86e61b4a53}</UniqueIdentifier>
     </Filter>
@@ -227,9 +224,6 @@
     <ClCompile Include="..\src\dllmain.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cpp">
-      <Filter>src\capnp</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\core\api.cpp">
       <Filter>src\thirdparty\stlsoft\pantheios\src\core</Filter>
     </ClCompile>
@@ -267,9 +261,6 @@
       <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
     </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\interval.cpp">
-      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\m2w.cpp">
       <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
     </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\pointer.cpp">
@@ -393,6 +384,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\_pan_exception.cpp">
+      <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\thirdparty\stlsoft\pantheios\src\inserters\w2m.cpp">
       <Filter>src\thirdparty\stlsoft\pantheios\src\inserters</Filter>
     </ClCompile>
   </ItemGroup>

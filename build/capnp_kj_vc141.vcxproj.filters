@@ -80,5 +80,8 @@
     <ClCompile Include="..\src\UsingCapnp.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\capnp\dll_thread_local_storage_win32.cc">
+      <Filter>src\capnp</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

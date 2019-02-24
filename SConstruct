@@ -46,6 +46,12 @@ env = Environment(TARGET_ARCH=target_arch)
 opts.Update(env)
 Help(opts.GenerateHelpText(env))
 
+print("================ platform ================")
+print(env['platform'])
+
+print("================ TARGET_ARCH ================")
+print(env['TARGET_ARCH'])
+
 is64 = sys.maxsize > 2**32
 if env['bits'] == 'default':
     env['bits'] = '64' if is64 else '32'
@@ -104,7 +110,17 @@ elif env['platform'] == 'windows':
         env.Append(CCFLAGS=['-g', '-O3', '-std=c++14', '-Wwrite-strings'])
         env.Append(LINKFLAGS=['--static', '-Wl,--no-undefined', '-static-libgcc', '-static-libstdc++'])
 
+
+print("================ bits ================")
+print(env['bits'])
+
+print("================ target ================")
+print(env['target'])
+       
+
 env.Append(CCFLAGS=['/DMY_SERVERCORE_BUILDING_SHARED',
+                    '/D_UNICODE',
+                    '/DUNICODE',
                     '/D__STDC_CONSTANT_MACROS',
                     '/D__STDC_FORMAT_MACROS',
                     '/DHAVE_STRUCT_TIMESPEC',
@@ -156,7 +172,7 @@ capnp_kj = env.StaticLibrary(
 )
 env.Append(LIBPATH=['lib/' + env['target']])
 
-print("==============================")
+print("================ LIBPATH ================")
 print(env['LIBPATH'])
 
 # servercore
@@ -164,6 +180,7 @@ sources = []
 add_sources(sources, 'src', 'cpp')
 add_sources(sources, 'src/base', 'cpp')
 add_sources(sources, 'src/base', 'c')
+add_sources(capnp_sources, 'src/capnp', 'cpp')
 
 sources.append('src/base/timingwheel/timeout/timeout.c')
 sources.append('src/base/timingwheel/timeout/timeout-bitops.c')
@@ -175,15 +192,47 @@ add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src', 'cpp')
 add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src/bitbucket', 'cpp')
 add_sources(sources, 'src/thirdparty/stlsoft/FastFormat/src/inserters', 'cpp')
 
-pantheios_sources = env.Glob('src/thirdparty/stlsoft/pantheios/src/inserters/*.cpp',
+add_sources(sources, 'src/thirdparty/stlsoft/pantheios/src/b64', 'c')
+
+sources.append('src/thirdparty/stlsoft/pantheios/src/backends/be.N.c')
+sources.append('src/thirdparty/stlsoft/pantheios/src/backends/bec.file.cpp')
+sources.append('src/thirdparty/stlsoft/pantheios/src/backends/bec.fprintf.cpp')
+
+add_sources(sources, 'src/thirdparty/stlsoft/pantheios/src/core', 'c')
+add_sources(sources, 'src/thirdparty/stlsoft/pantheios/src/core', 'cpp')
+
+sources.append('src/thirdparty/stlsoft/pantheios/src/frontends/fe.N.c')
+add_sources(sources, 'src/thirdparty/stlsoft/pantheios/src/inserters', 'cpp', ['m2w.cpp'])
+
+pantheios_sources_c = env.Glob('src/thirdparty/stlsoft/pantheios/src/util/*.c',
                             strings=True,
                             exclude='')
-sources = sources + pantheios_sources
+pantheios_sources_cpp = env.Glob('src/thirdparty/stlsoft/pantheios/src/util/*.cpp',
+                            strings=True,
+                            exclude='')
+
+sources = sources + pantheios_sources_c + pantheios_sources_cpp
+
+platform_libs = []
+if env['platform'] == 'windows':
+    platform_libs = [
+        'kernel32',
+        'user32',
+        'gdi32',
+        'winspool',
+        'comdlg32',
+        'advapi32',
+        'shell32',
+        'ole32',
+        'oleaut32',
+        'uuid',
+        'odbc32',
+        'odbccp32']
 
 servercore = env.SharedLibrary(
     target='lib/' + env['target'] + '/' + 'servercore',
     source=sources,
-    LIBS = ['capnp_kj']
+    LIBS = platform_libs + ['capnp_kj']
 )
 
 '''
