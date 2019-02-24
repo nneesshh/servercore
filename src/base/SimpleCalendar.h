@@ -91,148 +91,182 @@ public:
 
 public:
 	static int					MonthFrom1970(time_t tmDaypoint) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
-		return (tm_.tm_year - 70) * 12 + tm_.tm_mon;
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
+		return (tp.tm_year - 70) * 12 + tp.tm_mon;
 	}
 
 	static int					MonthInYear(time_t tmDaypoint) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
-		return tm_.tm_mon + 1;
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
+		return tp.tm_mon + 1;
 	}
 
 	static int					DayInMonth(time_t tmDaypoint) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
-		return tm_.tm_mday;
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
+		return tp.tm_mday;
 	}
 
 	static time_t				WeekDay(time_t tmDaypoint) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
-		tm_.tm_isdst = -1;
-		time_t theday = mktime(&tm_);
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
+
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
+		tp.tm_isdst = -1;
+		time_t theday = mktime(&tp);
 
 		// wday -- Sunday is the tm_wday beginning, but we use Monday as our week beginning
-		int wday = ((tm_.tm_wday - 1) + 7) % 7;
+		int wday = ((tp.tm_wday - 1) + 7) % 7;
 		return theday - wday * DAY_SECONDS;
 	}
 
 	static void					MonthDay(time_t tmDaypoint, time_t& outMonthDay, time_t& outMonthDayPre, time_t& outMonthDayPost) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
 
-		int year = tm_.tm_year;
-		int mon = tm_.tm_mon;
+		int year = tp.tm_year;
+		int mon = tp.tm_mon;
 		int mday = 1;
 
-		tm_.tm_year = year;
-		tm_.tm_mon = mon;
-		tm_.tm_mday = mday;
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
-		tm_.tm_isdst = -1;
-		outMonthDay = mktime(&tm_);
+		tp.tm_year = year;
+		tp.tm_mon = mon;
+		tp.tm_mday = mday;
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
+		tp.tm_isdst = -1;
+		outMonthDay = mktime(&tp);
 
-		tm_.tm_year = year;
-		tm_.tm_mon = mon - 1;
-		tm_.tm_mday = mday;
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
-		tm_.tm_isdst = -1;
-		outMonthDayPre = mktime(&tm_);
+		tp.tm_year = year;
+		tp.tm_mon = mon - 1;
+		tp.tm_mday = mday;
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
+		tp.tm_isdst = -1;
+		outMonthDayPre = mktime(&tp);
 
-		tm_.tm_year = year;
-		tm_.tm_mon = mon + 1;
-		tm_.tm_mday = mday;
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
-		tm_.tm_isdst = -1;
-		outMonthDayPost = mktime(&tm_);
+		tp.tm_year = year;
+		tp.tm_mon = mon + 1;
+		tp.tm_mday = mday;
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
+		tp.tm_isdst = -1;
+		outMonthDayPost = mktime(&tp);
 	}
 
 	static time_t				DatetimeToDate(time_t tmDaypoint) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
-		tm_.tm_isdst = -1;
-		return mktime(&tm_);
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
+
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
+		tp.tm_isdst = -1;
+		return mktime(&tp);
 	}
 
 	static time_t				StringToDate(const char *str) {
-		tm tm_;
+		struct tm tp;
 		int year = 0, month = 1, day = 1;
 		sscanf(str, "%d-%d-%d", &year, &month, &day);
-		tm_.tm_year = year - 1900;
-		tm_.tm_mon = month - 1;
-		tm_.tm_mday = day;
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
-		tm_.tm_isdst = -1;
+		tp.tm_year = year - 1900;
+		tp.tm_mon = month - 1;
+		tp.tm_mday = day;
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
+		tp.tm_isdst = -1;
 
-		time_t t_ = mktime(&tm_);
+		time_t t_ = mktime(&tp);
 		return t_;
 	}
 
 	static time_t				StringToDatetime(const char *str) {
-		tm tm_;
+		struct tm tp;
 		int year = 0, month = 1, day = 1, hour = 0, minute = 0, second = 0;
 		sscanf(str, "%d-%d-%d %d:%d:%d", &year, &month, &day, &hour, &minute, &second);
-		tm_.tm_year = year - 1900;
-		tm_.tm_mon = month - 1;
-		tm_.tm_mday = day;
-		tm_.tm_hour = hour;
-		tm_.tm_min = minute;
-		tm_.tm_sec = second;
-		tm_.tm_isdst = -1;
+		tp.tm_year = year - 1900;
+		tp.tm_mon = month - 1;
+		tp.tm_mday = day;
+		tp.tm_hour = hour;
+		tp.tm_min = minute;
+		tp.tm_sec = second;
+		tp.tm_isdst = -1;
 
-		time_t t_ = mktime(&tm_);
+		time_t t_ = mktime(&tp);
 		return t_;
 	}
 
 	static struct tm			FormatDate(time_t tmDay, char *chFormat, size_t szFormatLen) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDay);
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDay);
+#else
+		localtime_r(&tmDay, &tp);
+#endif
 
-		tm_.tm_hour = 0;
-		tm_.tm_min = 0;
-		tm_.tm_sec = 0;
+		tp.tm_hour = 0;
+		tp.tm_min = 0;
+		tp.tm_sec = 0;
 
 		o_snprintf(
 			chFormat
 			, szFormatLen
 			, "%04d-%02d-%02d"
-			, tm_.tm_year + 1900
-			, tm_.tm_mon + 1
-			, tm_.tm_mday);
-		return tm_;
+			, tp.tm_year + 1900
+			, tp.tm_mon + 1
+			, tp.tm_mday);
+		return tp;
 	}
 
 	static struct tm			FormatDatetime(time_t tmDaypoint, char *chFormat, size_t szFormatLen) {
-		struct tm tm_;
-		localtime_s(&tm_, &tmDaypoint);
+		struct tm tp;
+#ifdef _WIN32
+		localtime_s(&tp, &tmDaypoint);
+#else
+		localtime_r(&tmDaypoint, &tp);
+#endif
 
 		o_snprintf(
 			chFormat
 			, szFormatLen
 			, "%04d-%02d-%02d %02d:%02d:%02d"
-			, tm_.tm_year + 1900
-			, tm_.tm_mon + 1
-			, tm_.tm_mday
-			, tm_.tm_hour
-			, tm_.tm_min
-			, tm_.tm_sec);
-		return tm_;
+			, tp.tm_year + 1900
+			, tp.tm_mon + 1
+			, tp.tm_mday
+			, tp.tm_hour
+			, tp.tm_min
+			, tp.tm_sec);
+		return tp;
 	}
 
 private:
