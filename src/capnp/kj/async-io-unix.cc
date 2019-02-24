@@ -922,6 +922,7 @@ public:
 
   Timer& getTimer() override { return eventPort.getTimer(); }
 
+  EventLoop& getEventLoop() { return eventLoop; }
   UnixEventPort& getEventPort() { return eventPort; }
 
 private:
