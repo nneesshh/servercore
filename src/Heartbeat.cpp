@@ -13,6 +13,32 @@
 #endif
 #endif
 
+#if __linux__
+#include <sys/syscall.h>
+#define gettidv1() syscall(__NR_gettid)
+#define gettidv2() syscall(SYS_gettid)
+#endif
+
+static int
+get_current_pid() {
+#ifdef _WIN32
+	return (int)::GetCurrentProcessId();
+#else
+	return (int)getpid();
+
+#endif
+}
+
+static int
+get_current_tid() {
+#ifdef _WIN32
+	return (int)::GetCurrentThreadId();
+#else
+	return (int)gettidv1()); // latest
+	//return (int)gettidv2()); // traditional form
+#endif
+}
+
 static void
 write_heartbeat_crash_error(const char *appname, const char *err_txt) {
 	char log_file_name[256];
@@ -147,10 +173,10 @@ CHeartbeat::OnStats(int nConnectionCount, int nAccountCount, int nRecvBytes, int
 		CSimpleCalendar::FormatDatetime(tm_now_time, _nowformat, sizeof(_nowformat));
 		fprintf(stdout, "\n[CHeartbeat::OnStats()][%s]", _appname.c_str());
 		fprintf(stdout, "\n________[pid(%d)] [%04d:%02d:%02d][%03d] %s:%03d *%d/%d",
-			::GetCurrentProcessId(),
+			get_current_pid(),
 			nHours, nMinutes, nSeconds, nSecondsLeft, _nowformat, now_time_t_left, _diffOffsetInMs, _correctionOffsetInMs);
 		fprintf(stdout, "\n________[tid(%d)] FPS=(%.1f), Elapsed=(%d), Sleep=(%d), Capacity=c(%d)_a(%d)...R<%.1f>/S<%.1f>\n\n",
-			::GetCurrentThreadId(),
+			get_current_tid(),
 			_stats._fps,
 			_stats._elapsed_in_ms,
 			_stats._sleep_in_ms,
