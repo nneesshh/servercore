@@ -14,6 +14,7 @@
 #endif
 
 #if __linux__
+#include<unistd.h>
 #include <sys/syscall.h>
 #define gettidv1() syscall(__NR_gettid)
 #define gettidv2() syscall(SYS_gettid)
@@ -25,7 +26,6 @@ get_current_pid() {
 	return (int)::GetCurrentProcessId();
 #else
 	return (int)getpid();
-
 #endif
 }
 
