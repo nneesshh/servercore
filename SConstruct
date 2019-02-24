@@ -119,8 +119,6 @@ print(env['target'])
        
 
 env.Append(CCFLAGS=['/DMY_SERVERCORE_BUILDING_SHARED',
-                    '/D_UNICODE',
-                    '/DUNICODE',
                     '/D__STDC_CONSTANT_MACROS',
                     '/D__STDC_FORMAT_MACROS',
                     '/DHAVE_STRUCT_TIMESPEC',
@@ -131,7 +129,8 @@ env.Append(CCFLAGS=['/DMY_SERVERCORE_BUILDING_SHARED',
                     '/D_CONSOLE']
 )
 
-cpp_paths = ['.', env['headers_dir'], 'include', 'include/core', 
+cpp_paths = ['.',env['headers_dir'], 'include', 'include/core', 
+            'src',
             'src/thirdparty/stlsoft/STLSoft/include',
             'src/thirdparty/stlsoft/FastFormat/include',
             'src/thirdparty/stlsoft/pantheios/include'
@@ -165,6 +164,7 @@ if ARGUMENTS.get('generate_bindings', 'no') == 'yes':
 # capnp_kj
 capnp_sources = []
 capnp_sources.append('src/UsingCapnp.cc')
+add_sources(capnp_sources, 'src/capnp', 'cc')
 add_sources(capnp_sources, 'src/capnp/kj', 'cc')
 
 capnp_kj = env.StaticLibrary(

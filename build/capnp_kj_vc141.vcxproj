@@ -87,7 +87,7 @@
       <ModuleDefinitionFile>servercore.def</ModuleDefinitionFile>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MY_SERVERCORE_BUILDING_SHARED;HAVE_STRUCT_TIMESPEC;NO_SYS_UN;NO_STRNDUP;_CRT_SECURE_NO_WARNINGS;_ENABLE_ATOMIC_ALIGNMENT_FIX;_CONSOLE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <Optimization>Disabled</Optimization>
@@ -100,7 +100,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MY_SERVERCORE_BUILDING_SHARED;HAVE_STRUCT_TIMESPEC;NO_SYS_UN;NO_STRNDUP;_CRT_SECURE_NO_WARNINGS;_ENABLE_ATOMIC_ALIGNMENT_FIX;_CONSOLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
