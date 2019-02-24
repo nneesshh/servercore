@@ -554,7 +554,10 @@
 # define STLSOFT_COMPILER_LABEL_STRING          "GNU C/C++"
 # if __GNUC__ != 2 && \
      __GNUC__ != 3 && \
-     __GNUC__ != 4
+     __GNUC__ != 4 && \
+     __GNUC__ != 5 && \
+     __GNUC__ != 6 && \
+     __GNUC__ != 7
 #  error GNU C/C++ compilers whose major version is not 2, 3 or 4 are not currently supported by the STLSoft libraries
 # elif __GNUC__ == 2
 #  if __GNUC_MINOR__ < 95
@@ -2717,7 +2720,7 @@ private:
         __GNUC_MINOR__ >= 3 && \
         !defined(__APPLE__))
 
-  /* This version of the technique for GCC 3.3+ was suggested by Lars Rune Nøstdal,
+  /* This version of the technique for GCC 3.3+ was suggested by Lars Rune Nï¿½stdal,
    * from Norway. Many thanks, Lars!
    */
 
