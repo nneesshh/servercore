@@ -34,8 +34,8 @@ get_current_tid() {
 #ifdef _WIN32
 	return (int)::GetCurrentThreadId();
 #else
-	return (int)gettidv1()); // latest
-	//return (int)gettidv2()); // traditional form
+	return (int)gettidv1(); // latest
+	//return (int)gettidv2(); // traditional form
 #endif
 }
 
