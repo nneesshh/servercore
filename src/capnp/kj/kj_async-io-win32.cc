@@ -327,8 +327,8 @@ public:
     *length = socklen;
   }
 
-  kj_socket_t getFd() {
-	  return fd;
+  kj_socket_t getFd() override {
+	return fd;
   }
 
 private:
@@ -892,8 +892,8 @@ public:
                             reinterpret_cast<const char*>(value), length));
   }
 
-  kj_socket_t getFd() {
-	  return fd;
+  kj_socket_t getFd() override {
+    return fd;
   }
 
 public:

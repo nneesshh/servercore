@@ -197,6 +197,10 @@ public:
     *length = socklen;
   }
 
+  kj_socket_t getFd() override {
+	return fd;
+  }
+
   Promise<void> waitConnected() {
     // Wait until initial connection has completed. This actually just waits until it is writable.
 
@@ -823,6 +827,10 @@ public:
   }
   void setsockopt(int level, int option, const void* value, uint length) override {
     KJ_SYSCALL(::setsockopt(fd, level, option, value, length));
+  }
+
+  kj_socket_t getFd() override {
+    return fd;
   }
 
 public:
