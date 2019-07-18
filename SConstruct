@@ -13,6 +13,7 @@ def add_sources(sources, dir, extension, ignores=[]):
             if not ignore:
                 sources.append(dir + '/' + f)
 
+
 # Try to detect the host platform automatically
 # This is used if no `platform` argument is passed
 if sys.platform.startswith('linux'):
@@ -34,6 +35,7 @@ opts.Add(BoolVariable('use_mingw', 'Use the MinGW compiler - only effective on W
 # Must be the same setting as used for cpp_bindings
 opts.Add(EnumVariable('target', 'Compilation target', 'release', ('debug', 'release')))
 opts.Add(PathVariable('headers_dir', 'Path to the directory containing header files', 'addons'))
+
 
 bits = opts.args.get('bits', 'default')
 print("bits: " + bits)
@@ -143,7 +145,9 @@ cpp_paths = ['.',env['headers_dir'], 'include', 'include/core',
             'src/thirdparty/stlsoft/STLSoft/include',
             'src/thirdparty/stlsoft/FastFormat/include',
             'src/thirdparty/stlsoft/pantheios/include'
-            ]
+]
+
+# for vld
 if host_platform == 'windows' and not env['use_mingw']:
     cpp_paths.append('C:/Program Files (x86)/Visual Leak Detector/include')
 
@@ -155,20 +159,6 @@ if host_platform == 'windows' and not env['use_mingw']:
 
 env.Append(LIBPATH=lib_paths)
 
-# Generate bindings?
-json_api_file = ''
-
-if ARGUMENTS.get('use_custom_api_file', 'no') == 'yes':
-    json_api_file = ARGUMENTS.get('custom_api_file', '')
-else:
-    json_api_file = os.path.join(os.getcwd(), 'godot_api.json')
-
-if ARGUMENTS.get('generate_bindings', 'no') == 'yes':
-    # Actually create the bindings here
-
-    import binding_generator
-
-    binding_generator.generate_bindings(json_api_file)
 
 # capnp_kj
 capnp_sources = []
@@ -181,9 +171,9 @@ elif env['platform'] == 'windows':
     add_sources(capnp_sources, 'src/capnp/kj', 'cc', ['unix.cc'])
 
 capnp_kj = env.StaticLibrary(
-    target='lib/' + env['target'] + '/' + 'capnp_kj', source=capnp_sources
+    target='lib/' + host_platform + '/' + env['target'] + '/' + 'capnp_kj', source=capnp_sources
 )
-env.Append(LIBPATH=['lib/' + env['target']])
+env.Append(LIBPATH=['lib/' + host_platform + '/' + env['target']])
 
 print("================ LIBPATH ================")
 print(env['LIBPATH'])
@@ -247,20 +237,9 @@ if env['platform'] == 'windows':
         'odbccp32']
 
 servercore = env.SharedLibrary(
-    target='lib/' + env['target'] + '/' + 'servercore',
+    target='lib/' + host_platform + '/' + env['target'] + '/' + 'servercore',
     source=sources,
     LIBS = platform_libs + ['capnp_kj']
 )
-
-'''
-sources = []
-#add_sources(sources, 'src/core', 'cpp')
-add_sources(sources, 'src', 'cpp')
-
-library = env.StaticLibrary(
-    target='bin/' + 'libgodot-cpp.{}.{}.{}'.format(env['platform'], env['target'], env['bits']),
-    source=sources,
-)
-'''
 
 Default(capnp_kj, servercore)

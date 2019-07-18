@@ -243,23 +243,20 @@ CHeartbeat::StartDaemon() {
 
 */
 kj::Promise<void>
-CHeartbeat::MainUpdateLoop(kj::PromiseFulfiller<void> *fulfiller) {
+CHeartbeat::MainUpdateLoop(kj::PromiseFulfiller<void> *fulfiller)
+{
 	KjIoContext *context = static_cast<KjIoContext *>(servcercore_get_root_ctx());
 
 	if (!_quit) {
 		//
 		BeforeHeartbeat();
-
-		// heartbeat
-		{
-			_cbUpdate(_stats._elapsed_in_ms, _stats._now_system_time_in_ms);
-		}
-
+		_cbUpdate(_stats._elapsed_in_ms, _stats._now_system_time_in_ms);
 		AfterHeartbeat();
 
+		//
 		return context->AfterDelay(_stats._sleep_in_ms * kj::MILLISECONDS)
-			.then([this, fulfiller]() {
-
+			.then([this, fulfiller]()
+		{
 			return MainUpdateLoop(fulfiller);
 		});
 	}
